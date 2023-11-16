@@ -1,0 +1,11 @@
+{
+  "type": "peculiar_rooms:peculiar",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "peculiar_rooms:peculiar",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "peculiar_rooms:spawn_dungeons"
+    }
+  }
+}

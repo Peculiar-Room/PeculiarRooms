@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:replace_single_block",
+  "config": {
+    "targets": [
+      {
+        "target": {
+          "predicate_type": "minecraft:always_true"
+        },
+        "state": {
+          "Name": "minecraft:yellow_wool"
+        }
+      }
+    ]
+  }
+}
