@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_right",
+  "textures": {
+    "bottom": "peculiar_rooms:block/peculiar_door_bottom",
+    "top": "peculiar_rooms:block/peculiar_door_top"
+  }
+}

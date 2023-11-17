@@ -1,5 +1,6 @@
 package com.peculiarrooms;
 
+
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.SubscribeEvent;
