@@ -52,12 +52,12 @@ public class PeculiarRooms
 //            .alwaysEat().nutrition(1).saturationMod(2f).build())));
 //
 //    // Creates a creative tab with the id "examplemod:example_tab" for the example item, that is placed after the combat tab
-//    public static final RegistryObject<CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
-//            .withTabsBefore(CreativeModeTabs.COMBAT)
-//            .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
-//            .displayItems((parameters, output) -> {
-//                output.accept(EXAMPLE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
-//            }).build());
+    public static final RegistryObject<CreativeModeTab> PECULIAR_TAB = CREATIVE_MODE_TABS.register("peculiar_tab", () -> CreativeModeTab.builder()
+            .withTabsBefore(CreativeModeTabs.COMBAT)
+            .icon(() -> PRItemRegistry.PECULIAR_KEY.get().getDefaultInstance())
+            .displayItems((pParameters, pOutput) -> {
+                PRItemRegistry.creativeTabBuild(pParameters, pOutput);
+            }).build());
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
@@ -70,7 +70,7 @@ public class PeculiarRooms
         PRBlockRegistry.BLOCKS.register(modEventBus);
         PRItemRegistry.ITEMS.register(modEventBus);
         PRBlockEntityRegistry.BLOCK_ENTITIES.register(modEventBus);
-        //CREATIVE_MODE_TABS.register(modEventBus);
+        CREATIVE_MODE_TABS.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         NeoForge.EVENT_BUS.register(this);
