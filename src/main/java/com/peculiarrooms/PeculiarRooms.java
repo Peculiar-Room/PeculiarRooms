@@ -1,6 +1,9 @@
 package com.peculiarrooms;
 
 import com.mojang.logging.LogUtils;
+import com.peculiarrooms.data.PRBlockstateGen;
+import com.peculiarrooms.data.PRItemModels;
+import com.peculiarrooms.data.PRLangGen;
 import com.peculiarrooms.server.registries.PRBlockEntityRegistry;
 import com.peculiarrooms.server.registries.PRBlockRegistry;
 import com.peculiarrooms.server.registries.PRItemRegistry;
@@ -24,6 +27,7 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -121,5 +125,19 @@ public class PeculiarRooms
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
+    }
+    @SubscribeEvent
+    public void gatherData(GatherDataEvent event)
+    {
+//        DataGenerator PRgen = event.getGenerator();
+//        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+//
+//        PRgen.addProvider(new PRItemModelGen(PRgen));
+
+        event.getGenerator().addProvider(true, new PRBlockstateGen(event.getGenerator().getPackOutput(), event.getExistingFileHelper()));
+        event.getGenerator().addProvider(true,new PRItemModels(event.getGenerator().getPackOutput(), event.getExistingFileHelper()));
+        event.getGenerator().addProvider(true,new PRLangGen(event.getGenerator().getPackOutput(), "en_us"));
+        //event.getGenerator().addProvider(provider);
+        //event.getGenerator().addProvider(new PRLootTableGen(event.getGenerator()));
     }
 }
