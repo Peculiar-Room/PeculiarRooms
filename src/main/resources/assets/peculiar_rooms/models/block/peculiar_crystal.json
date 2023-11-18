@@ -1,0 +1,78 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [64, 64],
+	"textures": {
+		"0": "peculiar_rooms:block/peculiar_crystal_base",
+		"1": "peculiar_rooms:block/peculiar_crystal",
+		"particle": "peculiar_rooms:block/peculiar_crystal_base"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 3, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 12.75, 2.5], "texture": "#0"},
+				"east": {"uv": [0, 0, 12.75, 2.5], "texture": "#0"},
+				"south": {"uv": [0, 0, 12.75, 2.5], "texture": "#0"},
+				"west": {"uv": [0, 0, 12.75, 2.5], "texture": "#0"},
+				"up": {"uv": [0, 0, 13, 13.75], "texture": "#0"},
+				"down": {"uv": [0, 0, 13, 13.75], "texture": "#0"}
+			}
+		},
+		{
+			"from": [2, 3, 2],
+			"to": [14, 13, 14],
+			"faces": {
+				"north": {"uv": [0, 0, 12, 12.25], "texture": "#0"},
+				"east": {"uv": [0, 0, 12, 12.25], "texture": "#0"},
+				"south": {"uv": [0, 0, 12, 12.25], "texture": "#0"},
+				"west": {"uv": [0, 0, 12, 12.25], "texture": "#0"},
+				"up": {"uv": [0, 0, 12, 12.75], "texture": "#0"},
+				"down": {"uv": [0, 0, 12, 12.75], "texture": "#0"}
+			}
+		},
+		{
+			"from": [-1, 13, -1],
+			"to": [17, 17, 17],
+			"faces": {
+				"north": {"uv": [0, 0, 12.75, 4], "texture": "#0"},
+				"east": {"uv": [0, 0, 12.75, 4], "texture": "#0"},
+				"south": {"uv": [0, 0, 12.75, 4], "texture": "#0"},
+				"west": {"uv": [0, 0, 12.75, 4], "texture": "#0"},
+				"up": {"uv": [0, 0, 13.5, 14.25], "texture": "#0"},
+				"down": {"uv": [0, 0, 13.5, 14.25], "texture": "#0"}
+			}
+		},
+		{
+			"from": [4, 19, 4],
+			"to": [12, 27, 12],
+			"rotation": {"angle": 45, "axis": "x", "origin": [8, 23, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 14.3125, 14.5625], "texture": "#1"},
+				"east": {"uv": [0, 0, 14.3125, 14.5625], "texture": "#1"},
+				"south": {"uv": [0, 0, 14.3125, 14.5625], "texture": "#1"},
+				"west": {"uv": [0, 0, 14.3125, 14.5625], "texture": "#1"},
+				"up": {"uv": [0, 0, 14.3125, 14.5625], "texture": "#1"},
+				"down": {"uv": [0, 0, 14.3125, 14.5625], "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "group",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [
+				0,
+				1,
+				2,
+				{
+					"name": "crystal",
+					"origin": [8, 8, 8],
+					"color": 0,
+					"children": [3]
+				}
+			]
+		}
+	]
+}

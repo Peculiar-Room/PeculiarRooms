@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.ForgeRegistries;
@@ -26,5 +27,13 @@ public class PRBlockRegistry {
             .pushReaction(PushReaction.DESTROY),
                     BlockSetType.WARPED
     ));
+
+    public static final RegistryObject<Block> PECULIAR_CRYTAL = BLOCKS.register("peculiar_crystal", () ->
+            new Block(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.DIRT)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)
+            ));
 
 }
