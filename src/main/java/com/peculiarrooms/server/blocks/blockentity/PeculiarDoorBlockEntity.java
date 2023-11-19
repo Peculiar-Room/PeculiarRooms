@@ -26,6 +26,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 import net.neoforged.neoforge.common.Tags;
 
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Random;
 
@@ -33,11 +34,14 @@ public class PeculiarDoorBlockEntity extends BlockEntity {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
     Random ran = new Random();
-    public final ResourceLocation structureName = ran.nextBoolean() ? ResourceLocation.tryParse("peculiar_rooms:office_main") : ResourceLocation.tryParse("peculiar_rooms:office_corridor");
+    ResourceLocation[] structures = {
+            ResourceLocation.tryParse("peculiar_rooms:bedroom_danger"),
+            ResourceLocation.tryParse("peculiar_rooms:office_corridor"),
+            ResourceLocation.tryParse("peculiar_rooms:office_main")};
+    public final ResourceLocation structureName = structures[ran.nextInt(3)];
     public PeculiarDoorBlockEntity(BlockPos pos, BlockState state) {
         super(PRBlockEntityRegistry.PECULIAR_DOOR.get(), pos, state);
     }
-
     public void generateRoom(BlockPos pos, BlockState state){
         BlockPos doorPos = pos;
         int groundPos = pos.below().getY();

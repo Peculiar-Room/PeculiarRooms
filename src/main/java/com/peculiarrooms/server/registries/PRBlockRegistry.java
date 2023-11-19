@@ -72,6 +72,22 @@ public class PRBlockRegistry {
                             .strength(1.5F, 6.0F)
                             .sound(SoundType.MOSS_CARPET)
             ));
+    public static final RegistryObject<Block> BEDROOM_WALL = registerBlock("bedroom_wall", () ->
+            new Block(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.WOOL)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)
+                            .sound(SoundType.FROGLIGHT)
+            ));
+    public static final RegistryObject<Block> BEDROOM_WALLPAPER = registerBlock("bedroom_wallpaper", () ->
+            new Block(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.WOOL)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)
+                            .sound(SoundType.FROGLIGHT)
+            ));
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

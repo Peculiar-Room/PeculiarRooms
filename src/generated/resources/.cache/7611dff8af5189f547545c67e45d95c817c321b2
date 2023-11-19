@@ -1,4 +1,6 @@
-// 1.20.2	2023-11-19T00:01:57.1778328	Item Models: peculiar_rooms
+// 1.20.2	2023-11-19T16:19:28.9864816	Item Models: peculiar_rooms
+ecfa6532c8ba88d07710b78c372cf98fd693b56f assets/peculiar_rooms/models/item/bedroom_wall.json
+5909a2dde3fbceec0e5b0fb38445bd325d23ef84 assets/peculiar_rooms/models/item/bedroom_wallpaper.json
 5b217a981b726557a66f5c87b601b95da2888542 assets/peculiar_rooms/models/item/carpeting.json
 b57df722ee117e06a6cbcf10357b0b1634d5a2f8 assets/peculiar_rooms/models/item/office_ceiling.json
 479274f9e42f7657b89faf3097578c94d53e4f29 assets/peculiar_rooms/models/item/office_light.json

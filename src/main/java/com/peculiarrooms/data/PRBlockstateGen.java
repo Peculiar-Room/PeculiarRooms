@@ -31,6 +31,8 @@ public class PRBlockstateGen extends BlockStateProvider {
         basicBlock(PRBlockRegistry.OFFICE_WALL);
         basicBlock(PRBlockRegistry.OFFICE_LIGHT);
         basicBlock(PRBlockRegistry.CARPETING);
+        basicBlock(PRBlockRegistry.BEDROOM_WALL);
+        basicBlock(PRBlockRegistry.BEDROOM_WALLPAPER);
 
         DataHelper.takeAll(blocks, b -> b.get() instanceof StairBlock).forEach(this::stairsBlock);
         DataHelper.takeAll(blocks, b -> b.get() instanceof WallBlock).forEach(this::wallBlock);

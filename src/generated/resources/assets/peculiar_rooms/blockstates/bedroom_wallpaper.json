@@ -1,0 +1,18 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "peculiar_rooms:block/bedroom_wallpaper_empty",
+        "weight": 3
+      },
+      {
+        "model": "peculiar_rooms:block/bedroom_wallpaper",
+        "weight": 1
+      },
+      {
+        "model": "peculiar_rooms:block/bedroom_wallpaper_2",
+        "weight": 1
+      }
+    ]
+  }
+}
