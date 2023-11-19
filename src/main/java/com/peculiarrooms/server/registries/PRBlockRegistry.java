@@ -39,7 +39,39 @@ public class PRBlockRegistry {
                             .requiresCorrectToolForDrops()
                             .strength(1.5F, 6.0F)
             ));
-
+    public static final RegistryObject<Block> OFFICE_LIGHT = registerBlock("office_light", () ->
+            new Block(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.WOOL)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)
+                            .lightLevel(d->8)
+                            .sound(SoundType.CHAIN)
+            ));
+    public static final RegistryObject<Block> OFFICE_WALL = registerBlock("office_wall", () ->
+            new Block(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.WOOL)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)
+                            .sound(SoundType.MANGROVE_ROOTS)
+            ));
+    public static final RegistryObject<Block> OFFICE_CEILING = registerBlock("office_ceiling", () ->
+            new Block(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.WOOL)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)
+                            .sound(SoundType.MANGROVE_ROOTS)
+            ));
+    public static final RegistryObject<Block> CARPETING = registerBlock("carpeting", () ->
+            new Block(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.WOOL)
+                            .requiresCorrectToolForDrops()
+                            .strength(1.5F, 6.0F)
+                            .sound(SoundType.MOSS_CARPET)
+            ));
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

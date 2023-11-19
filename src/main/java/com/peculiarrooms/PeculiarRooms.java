@@ -2,6 +2,7 @@ package com.peculiarrooms;
 
 import com.mojang.logging.LogUtils;
 import com.peculiarrooms.data.PRBlockstateGen;
+import com.peculiarrooms.data.PRItemModelGen;
 import com.peculiarrooms.data.PRItemModels;
 import com.peculiarrooms.data.PRLangGen;
 import com.peculiarrooms.server.registries.PRBlockEntityRegistry;
@@ -9,6 +10,7 @@ import com.peculiarrooms.server.registries.PRBlockRegistry;
 import com.peculiarrooms.server.registries.PRItemRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -27,6 +29,7 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -75,7 +78,7 @@ public class PeculiarRooms
         PRItemRegistry.ITEMS.register(modEventBus);
         PRBlockEntityRegistry.BLOCK_ENTITIES.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
-
+        modEventBus.addListener(this::gatherData);
         // Register ourselves for server and other game events we are interested in
         NeoForge.EVENT_BUS.register(this);
 
@@ -129,14 +132,14 @@ public class PeculiarRooms
     @SubscribeEvent
     public void gatherData(GatherDataEvent event)
     {
-//        DataGenerator PRgen = event.getGenerator();
-//        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-//
-//        PRgen.addProvider(new PRItemModelGen(PRgen));
+        DataGenerator PRgen = event.getGenerator();
+        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
-        event.getGenerator().addProvider(true, new PRBlockstateGen(event.getGenerator().getPackOutput(), event.getExistingFileHelper()));
-        event.getGenerator().addProvider(true,new PRItemModels(event.getGenerator().getPackOutput(), event.getExistingFileHelper()));
-        event.getGenerator().addProvider(true,new PRLangGen(event.getGenerator().getPackOutput(), "en_us"));
+        PRgen.addProvider(true, new PRItemModelGen(PRgen.getPackOutput(), existingFileHelper));
+
+        event.getGenerator().addProvider(true, new PRBlockstateGen(PRgen.getPackOutput(), existingFileHelper));
+//        event.getGenerator().addProvider(true, new PRItemModels(PRgen.getPackOutput(), existingFileHelper));
+        event.getGenerator().addProvider(true, new PRLangGen(PRgen.getPackOutput(), "en_us"));
         //event.getGenerator().addProvider(provider);
         //event.getGenerator().addProvider(new PRLootTableGen(event.getGenerator()));
     }

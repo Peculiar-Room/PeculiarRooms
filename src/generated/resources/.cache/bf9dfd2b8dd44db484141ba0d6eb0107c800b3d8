@@ -1,0 +1,9 @@
+// 1.20.2	2023-11-19T00:01:57.1738442	Block States: peculiar_rooms
+221371a8df0556c5b5905e61f072262abd8869f6 assets/peculiar_rooms/blockstates/carpeting.json
+3a0c69ca58a3bdcbb537f19232f8e62a6ed8a477 assets/peculiar_rooms/blockstates/office_ceiling.json
+1bb67166a936c055b5de96864fcc79b0328da78c assets/peculiar_rooms/blockstates/office_light.json
+e7361c6a8b7db19dcda44b4fd3126b28fcd28329 assets/peculiar_rooms/blockstates/office_wall.json
+1cef32cefdf4561291cf22a0ffb94aca4e2f0ca5 assets/peculiar_rooms/models/block/carpeting.json
+87e4c2509217922276b99426b0693df2979137e7 assets/peculiar_rooms/models/block/office_ceiling.json
+e58e6b349437711cb6f6e00abab5cfd1a621da9a assets/peculiar_rooms/models/block/office_light.json
+bedfcfa6ed8f07c2eb9d0f2a9dedcbe6ca289870 assets/peculiar_rooms/models/block/office_wall.json

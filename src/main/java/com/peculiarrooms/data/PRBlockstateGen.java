@@ -27,6 +27,11 @@ public class PRBlockstateGen extends BlockStateProvider {
     protected void registerStatesAndModels() {
         Set<RegistryObject<Block>> blocks = new HashSet<>(BLOCKS.getEntries());
 
+        basicBlock(PRBlockRegistry.OFFICE_CEILING);
+        basicBlock(PRBlockRegistry.OFFICE_WALL);
+        basicBlock(PRBlockRegistry.OFFICE_LIGHT);
+        basicBlock(PRBlockRegistry.CARPETING);
+
         DataHelper.takeAll(blocks, b -> b.get() instanceof StairBlock).forEach(this::stairsBlock);
         DataHelper.takeAll(blocks, b -> b.get() instanceof WallBlock).forEach(this::wallBlock);
         DataHelper.takeAll(blocks, b -> b.get() instanceof FenceBlock).forEach(this::fenceBlock);

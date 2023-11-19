@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "peculiar_rooms:item/peculiar_key"
+  }
+}
