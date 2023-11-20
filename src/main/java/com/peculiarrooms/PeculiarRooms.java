@@ -1,25 +1,20 @@
 package com.peculiarrooms;
 
 import com.mojang.logging.LogUtils;
+import com.peculiarrooms.client.renderers.blocks.PeculiarCrystalRenderer;
 import com.peculiarrooms.data.PRBlockstateGen;
 import com.peculiarrooms.data.PRItemModelGen;
-import com.peculiarrooms.data.PRItemModels;
 import com.peculiarrooms.data.PRLangGen;
 import com.peculiarrooms.server.registries.PRBlockEntityRegistry;
 import com.peculiarrooms.server.registries.PRBlockRegistry;
 import com.peculiarrooms.server.registries.PRItemRegistry;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -28,10 +23,10 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.ForgeRegistries;
@@ -45,7 +40,7 @@ public class PeculiarRooms
     // Define mod id in a common place for everything to reference
     public static final String MODID = "peculiar_rooms";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
@@ -79,6 +74,7 @@ public class PeculiarRooms
         PRBlockEntityRegistry.BLOCK_ENTITIES.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
         modEventBus.addListener(this::gatherData);
+
         // Register ourselves for server and other game events we are interested in
         NeoForge.EVENT_BUS.register(this);
 
@@ -117,18 +113,23 @@ public class PeculiarRooms
         LOGGER.info("HELLO from server starting");
     }
 
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
     {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
+
+        @SubscribeEvent
+        public static void registerRenderers(final EntityRenderersEvent.RegisterRenderers event) {
+            event.registerBlockEntityRenderer(PRBlockEntityRegistry.PECULIAR_CRYSTAL.get(),PeculiarCrystalRenderer::new);
+        }
     }
+
+
     @SubscribeEvent
     public void gatherData(GatherDataEvent event)
     {

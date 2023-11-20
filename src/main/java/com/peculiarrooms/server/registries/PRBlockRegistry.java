@@ -2,8 +2,8 @@ package com.peculiarrooms.server.registries;
 
 
 import com.peculiarrooms.PeculiarRooms;
+import com.peculiarrooms.server.blocks.PeculiarCrystalBlock;
 import com.peculiarrooms.server.blocks.PeculiarDoorBlock;
-import com.peculiarrooms.server.blocks.blockentity.PeculiarDoorBlockEntity;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -32,8 +32,8 @@ public class PRBlockRegistry {
                     BlockSetType.WARPED
     ));
 
-    public static final RegistryObject<Block> PECULIAR_CRYTAL = registerBlock("peculiar_crystal", () ->
-            new Block(
+    public static final RegistryObject<PeculiarCrystalBlock> PECULIAR_CRYSTAL = registerBlock("peculiar_crystal", () ->
+            new PeculiarCrystalBlock(
                     BlockBehaviour.Properties.of()
                             .mapColor(MapColor.DIRT)
                             .requiresCorrectToolForDrops()
