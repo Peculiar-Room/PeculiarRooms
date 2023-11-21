@@ -18,6 +18,8 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Random;
+
 public class PeculiarCrystalBlock extends BaseEntityBlock implements GameMasterBlock {
 
     public PeculiarCrystalBlock(Properties properties) {
@@ -29,11 +31,16 @@ public class PeculiarCrystalBlock extends BaseEntityBlock implements GameMasterB
         return RenderShape.MODEL;
     }
 
+    @Override
+    public void onPlace(BlockState p_60566_, Level p_60567_, BlockPos p_60568_, BlockState p_60569_, boolean p_60570_) {
+        super.onPlace(p_60566_, p_60567_, p_60568_, p_60569_, p_60570_);
+    }
 
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new PeculiarCrystalBlockEntity(pos, state);
+        Random rand = new Random();
+        return new PeculiarCrystalBlockEntity(pos, state, 3);
     }
 
 

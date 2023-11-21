@@ -10,9 +10,6 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
@@ -60,12 +57,12 @@ public class PeculiarCrystalRenderer<T extends PeculiarCrystalBlockEntity> imple
         Matrix4f matrix4f = matrixstack$entry.pose();
         Matrix3f matrix3f = matrixstack$entry.normal();
         for (Vec3 vec : FACES) {
-            Vec3 vec1 = vec.multiply(0.1 + (Math.cos(entity.ticks_existed) * 0.002),0.1f + (Math.sin(entity.ticks_existed) * 0.002),0.1 + (Math.sin(entity.ticks_existed) * 0.002))
-                    .yRot((float) entity.ticks_existed /10f)
-                    .xRot((float) (Math.sin(entity.ticks_existed / 2.5f) * 0.03))
-                    .zRot((float) (Math.cos(entity.ticks_existed / 2.5f) * 0.02));
+            Vec3 vec1 = vec.multiply(0.04+ (Math.cos(entity.crystal_rotation_client) * 0.002),0.04f + (Math.sin(entity.crystal_rotation_client) * 0.002),0.04 + (Math.sin(entity.crystal_rotation_client) * 0.002))
+                    .yRot((float) entity.crystal_rotation_client /10f)
+                    .xRot((float) (Math.sin(entity.crystal_rotation_client / 2.5f) * 0.03))
+                    .zRot((float) (Math.cos(entity.crystal_rotation_client / 2.5f) * 0.02));
             builder.vertex(matrix4f, (float) vec1.x + 0.5f,
-                            (float) ((float) vec1.y + 1.9f + Math.sin(entity.ticks_existed / 5f) * 0.1),
+                            (float) ((float) vec1.y + 1.4f + Math.sin(entity.crystal_rotation_client / 5f) * 0.1),
                             (float) vec1.z + 0.5f)
                     .color(1f, 1f, 1f, 1f)
                     .uv((float) vec1.normalize().x, (float) vec1.normalize().z)
@@ -75,20 +72,6 @@ public class PeculiarCrystalRenderer<T extends PeculiarCrystalBlockEntity> imple
                     .endVertex();
         }
 
-        for (int i = 0; i < 6; i++) {
-            for (Vec3 vec : FACES) {
-                Vec3 vec2 = vec.multiply(0.03f, 0.05f, 0.03f).yRot(entity.ticks_existed / 5f).add(1d, Math.sin(entity.ticks_existed / 5f - i) * 0.1, 0d).yRot(entity.ticks_existed / 10f + (i * 1.1f));
-                builder.vertex(matrix4f, (float) vec2.x + 0.5f,
-                                (float) ((float) vec2.y + 1.9f + Math.sin(entity.ticks_existed / 5f) * 0.1),
-                                (float) vec2.z + 0.5f)
-                        .color(1f, 1f, 1f, 1f)
-                        .uv((float) vec2.normalize().x, (float) vec2.normalize().z)
-                        .overlayCoords(OverlayTexture.NO_OVERLAY)
-                        .uv2(15728880)
-                        .normal(matrix3f, (float) -vec2.x, (float) -vec2.y, (float) -vec2.z)
-                        .endVertex();
-            }
-        }
 
         stack.popPose();
 

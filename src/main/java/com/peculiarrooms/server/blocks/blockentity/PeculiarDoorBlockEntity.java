@@ -35,7 +35,7 @@ public class PeculiarDoorBlockEntity extends BlockEntity {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
     Random ran = new Random();
     ResourceLocation[] structures = {
-            ResourceLocation.tryParse("peculiar_rooms:bedroom_danger"),
+            ResourceLocation.tryParse("peculiar_rooms:office_main"),
             ResourceLocation.tryParse("peculiar_rooms:office_corridor"),
             ResourceLocation.tryParse("peculiar_rooms:office_main")};
     public final ResourceLocation structureName = structures[ran.nextInt(3)];
@@ -51,8 +51,8 @@ public class PeculiarDoorBlockEntity extends BlockEntity {
         if (!level.isClientSide){
             loadStructure((ServerLevel) level, pos.relative(state.getValue(FACING)), state);
         }
-        level.setBlock(pos.relative(state.getValue(FACING)), Blocks.AIR.defaultBlockState(), 3);
-        level.setBlock(pos.relative(state.getValue(FACING)).above(), Blocks.AIR.defaultBlockState(), 3);
+
+        level.setBlock(chunkPos.getMiddleBlockPosition(pos.getY()).offset(level.random.nextInt(-2, 3), 0, level.random.nextInt(-2, 3)), PRBlockRegistry.PECULIAR_CRYSTAL.get().defaultBlockState(), 3);
 
 //        int minX = chunkPos.getMinBlockX();
 //        int maxX = chunkPos.getMaxBlockX();
