@@ -10,7 +10,6 @@ import com.peculiarrooms.server.registries.PRBlockRegistry;
 import com.peculiarrooms.server.registries.PRItemRegistry;
 import com.peculiarrooms.util.waves.WaveInfo;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.CreativeModeTab;
@@ -86,6 +85,8 @@ public class PeculiarRooms
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
+
+
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         // Some common setup code
@@ -130,6 +131,8 @@ public class PeculiarRooms
             event.registerBlockEntityRenderer(PRBlockEntityRegistry.PECULIAR_CRYSTAL.get(),PeculiarCrystalRenderer::new);
         }
     }
+
+
 
 
     @SubscribeEvent

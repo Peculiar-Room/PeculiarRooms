@@ -37,7 +37,7 @@ public class PeculiarDoorBlockEntity extends BlockEntity {
     ResourceLocation[] structures = {
             ResourceLocation.tryParse("peculiar_rooms:office_main"),
             ResourceLocation.tryParse("peculiar_rooms:office_corridor"),
-            ResourceLocation.tryParse("peculiar_rooms:office_main")};
+            ResourceLocation.tryParse("peculiar_rooms:office_corridor_corner")};
     public final ResourceLocation structureName = structures[ran.nextInt(3)];
     public PeculiarDoorBlockEntity(BlockPos pos, BlockState state) {
         super(PRBlockEntityRegistry.PECULIAR_DOOR.get(), pos, state);

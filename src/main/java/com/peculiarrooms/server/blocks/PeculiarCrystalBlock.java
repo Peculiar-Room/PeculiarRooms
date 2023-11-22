@@ -40,7 +40,7 @@ public class PeculiarCrystalBlock extends BaseEntityBlock implements GameMasterB
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         Random rand = new Random();
-        return new PeculiarCrystalBlockEntity(pos, state, 3);
+        return new PeculiarCrystalBlockEntity(pos, state, rand.nextInt(10) + 5);
     }
 
 
